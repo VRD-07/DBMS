@@ -1,0 +1,26 @@
+{
+  "name": "voltcart-dbms",
+  "version": "1.0.0",
+  "description": "Voltcart - Electronics Store DBMS Fullstack Project (Express + MySQL + Vanilla Web)",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "import:db": "node import-db.js"
+  },
+  "keywords": [
+    "dbms",
+    "mysql",
+    "express",
+    "ecommerce",
+    "electronics"
+  ],
+  "author": "Voltcart Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  }
+}

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voltcart — Precision Hardware & Electronics</title>
+  <meta name="description" content="Curated hardware, professional audio, mirrorless cameras, and premium computing equipment.">
+  
+  <!-- Modern Typography: Archivo & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Sticky Slim Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-logo" id="nav-logo" title="Voltcart Store Home">
+        <div class="logo-symbol">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <span class="logo-text">VOLTCART</span>
+      </div>
+
+      <div class="header-search">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="global-search-input" placeholder="Search phones, laptops, audio, cameras..." aria-label="Search catalog">
+      </div>
+
+      <nav class="header-actions">
+        <button class="nav-link active" id="nav-btn-shop">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          Shop
+        </button>
+        <button class="nav-link" id="nav-btn-admin">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          Admin
+        </button>
+        <button class="cart-button" id="header-cart-btn" aria-label="Shopping Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="tabular-nums">Cart</span>
+          <span class="cart-badge tabular-nums" id="cart-counter">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ====================================================================== -->
+  <!-- VIEW 1: SHOP CATALOG -->
+  <!-- ====================================================================== -->
+  <main id="view-shop" class="container">
+    <!-- Hero Banner -->
+    <section class="hero-section">
+      <div class="hero-banner">
+        <div class="hero-content">
+          <div class="hero-tag">Precision Catalog 2024</div>
+          <h1 class="hero-title">Engineered for clarity, tactile speed, and performance.</h1>
+          <p class="hero-subtitle">High-grade consumer electronics, acoustic headphones, mirrorless cameras, and computing hardware.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Filter Chips -->
+    <section class="shop-filters-row">
+      <div class="category-chips" id="category-chips-list">
+        <!-- Injected dynamically via JS: All, Phones, Laptops, Audio, Cameras, Wearables, Accessories -->
+        <button class="chip active" data-category="all">All Products</button>
+      </div>
+
+      <!-- Filter Bar: Brand Filter, Sort Dropdown, Result Count -->
+      <div class="filter-bar">
+        <div class="filter-bar-left">
+          <div class="filter-select-group">
+            <label for="filter-brand">Brand</label>
+            <select id="filter-brand" class="custom-select">
+              <option value="all">All Brands</option>
+            </select>
+          </div>
+          <div class="filter-select-group">
+            <label for="sort-select">Sort By</label>
+            <select id="sort-select" class="custom-select">
+              <option value="newest">Newest Arrivals</option>
+              <option value="price_asc">Price: Low to High</option>
+              <option value="price_desc">Price: High to Low</option>
+              <option value="name_asc">Name: A to Z</option>
+            </select>
+          </div>
+        </div>
+        <div class="results-count" id="results-count-text">Showing catalog items</div>
+      </div>
+    </section>
+
+    <!-- Product Grid: 4 columns desktop, 2 mobile. Strict card requirements -->
+    <section id="product-grid" class="product-grid">
+      <!-- Injected dynamically via JS -->
+    </section>
+
+    <!-- Pagination -->
+    <nav class="pagination-wrap" id="pagination-container" aria-label="Catalog pages">
+      <!-- Injected dynamically -->
+    </nav>
+  </main>
+
+  <!-- ====================================================================== -->
+  <!-- VIEW 2: CART & CHECKOUT -->
+  <!-- ====================================================================== -->
+  <section id="view-cart" class="container cart-view-container" style="display: none;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+      <h2>Shopping Cart & Checkout</h2>
+      <button class="btn-secondary" id="btn-back-to-shop">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Continue Shopping
+      </button>
+    </div>
+
+    <div id="cart-content-wrapper">
+      <div class="cart-layout">
+        <!-- Left: Line items -->
+        <div class="cart-card">
+          <div class="cart-card-title">Order Items (<span id="cart-item-count-label">0</span>)</div>
+          <div class="cart-items-list" id="cart-items-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Right: Checkout Details & Order Submission -->
+        <div class="cart-card">
+          <div class="cart-card-title">Customer & Payment</div>
+          
+          <form id="checkout-form">
+            <div class="form-group">
+              <label class="form-label" for="checkout-customer-select">Select Existing Customer</label>
+              <select id="checkout-customer-select" class="form-select">
+                <option value="">-- Choose Existing Customer or Enter Below --</option>
+              </select>
+            </div>
+
+            <div id="new-customer-fields">
+              <div class="form-group">
+                <label class="form-label" for="cust-name">Full Name *</label>
+                <input type="text" id="cust-name" class="form-input" placeholder="e.g. Arjun Kapoor" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="cust-email">Email Address *</label>
+                <input type="email" id="cust-email" class="form-input" placeholder="e.g. arjun@domain.com" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+                <div class="form-group">
+                  <label class="form-label" for="cust-phone">Phone Number *</label>
+                  <input type="tel" id="cust-phone" class="form-input" placeholder="+91 98..." required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cust-city">City *</label>
+                  <input type="text" id="cust-city" class="form-input" placeholder="e.g. Bengaluru" required>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--border-light);">
+              <div class="summary-line">
+                <span>Subtotal</span>
+                <span class="tabular-nums" id="checkout-subtotal">₹0.00</span>
+              </div>
+              <div class="summary-line">
+                <span>Shipping</span>
+                <span>Free Express Delivery</span>
+              </div>
+              <div class="summary-total">
+                <span>Total Payable</span>
+                <span class="tabular-nums" id="checkout-total">₹0.00</span>
+              </div>
+            </div>
+
+            <div style="margin-top: var(--space-6);">
+              <button type="submit" class="btn-primary" id="btn-place-order">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                  <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                Place Order (Atomic Transaction)
+              </button>
+              <div class="form-help" style="text-align: center; margin-top: 8px;">
+                Verified atomic transaction: checks stock constraints, updates orders & order_items
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Placed Success Confirmation State -->
+    <div id="order-success-screen" class="order-confirmation-box" style="display: none;">
+      <div class="confirm-icon-circle">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2>Order Confirmed & Recorded!</h2>
+      <p style="margin-top: var(--space-2);">Your order has been written to the database with verified stock reduction.</p>
+      <div class="order-badge-pill" id="confirm-order-id">ORDER #---</div>
+      <div style="font-size: 1.125rem; font-weight: 700; margin-bottom: var(--space-6); color: var(--text-primary);" id="confirm-order-total">
+        Total: ₹0.00
+      </div>
+      <div style="display: flex; justify-content: center; gap: var(--space-4);">
+        <button class="btn-secondary" id="btn-confirm-admin">View In Admin Log</button>
+        <button class="btn-primary" style="width: auto; padding: 0 var(--space-6);" id="btn-confirm-continue">Shop More Items</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================== -->
+  <!-- VIEW 3: ADMIN DASHBOARD & MANAGEMENT -->
+  <!-- ====================================================================== -->
+  <section id="view-admin" class="container admin-container" style="display: none;">
+    <div class="admin-header">
+      <div>
+        <h2>Store Administration & DBMS Control</h2>
+        <p style="margin-top: 4px;">Direct relational database operations, aggregate queries, and real-time inventory management.</p>
+      </div>
+      <button class="btn-secondary" id="btn-admin-to-shop">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Return to Shop
+      </button>
+    </div>
+
+    <!-- Admin Navigation Tabs -->
+    <div class="admin-tabs">
+      <button class="admin-tab-btn active" data-tab="tab-dashboard">Dashboard Strip</button>
+      <button class="admin-tab-btn" data-tab="tab-products">Products Catalog</button>
+      <button class="admin-tab-btn" data-tab="tab-orders">Orders & History</button>
+      <button class="admin-tab-btn" data-tab="tab-customers">Customers</button>
+    </div>
+
+    <!-- TAB 1: DASHBOARD -->
+    <div id="tab-dashboard" class="admin-tab-panel">
+      <!-- 4 Stats Strip -->
+      <div class="stats-strip">
+        <div class="stat-tile">
+          <div class="stat-label">Total Revenue</div>
+          <div class="stat-value tabular-nums" id="stat-revenue">₹0</div>
+          <div class="stat-sub">From all paid & fulfilled orders</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value tabular-nums" id="stat-orders">0</div>
+          <div class="stat-sub" id="stat-pending-orders">0 pending fulfillment</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Catalog Products</div>
+          <div class="stat-value tabular-nums" id="stat-products">0</div>
+          <div class="stat-sub">Active hardware SKUs</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Registered Customers</div>
+          <div class="stat-value tabular-nums" id="stat-customers">0</div>
+          <div class="stat-sub">Across 10 metropolitan hubs</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
+        <!-- Low Stock Alert (< 5 items) -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Low-Stock Inventory (< 5 units)</h3>
+            <span class="status-badge badge-cancelled" id="low-stock-count-badge">0 items</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>SKU</th>
+                  <th>Stock</th>
+                  <th>Unit Price</th>
+                </tr>
+              </thead>
+              <tbody id="low-stock-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Top 5 Selling Products (JOIN & GROUP BY) -->
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Top 5 Selling Hardware</h3>
+            <span class="status-badge badge-paid">Sales Volume</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Hardware</th>
+                  <th>Brand</th>
+                  <th>Units Sold</th>
+                  <th>Gross Sales</th>
+                </tr>
+              </thead>
+              <tbody id="top-selling-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: PRODUCTS TABLE (CRUD) -->
+    <div id="tab-products" class="admin-tab-panel" style="display: none;">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h3>Inventory Catalog</h3>
+            <p style="font-size: 0.8125rem;">Manage stock, pricing, and hardware specifications.</p>
+          </div>
+          <button class="btn-primary" style="width: auto; height: 36px;" id="btn-open-create-product">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add New Product
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="admin-products-table">
+            <thead>
+              <tr>
+                <th>Hardware / Name</th>
+                <th>SKU</th>
+                <th>Category</th>
+                <th>Price (INR)</th>
+                <th>Stock</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: ORDERS TABLE -->
+    <div id="tab-orders" class="admin-tab-panel" style="display: none;">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h3>Customer Orders (VIEW v_order_summary)</h3>
+            <p style="font-size: 0.8125rem;">Real-time joined view with order items count and customer metadata.</p>
+          </div>
+          <div style="display: flex; gap: var(--space-2); align-items: center;">
+            <select id="admin-orders-filter-status" class="custom-select">
+              <option value="all">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="paid">Paid</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Items</th>
+                <th>Total (INR)</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: CUSTOMERS TABLE -->
+    <div id="tab-customers" class="admin-tab-panel" style="display: none;">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <div>
+            <h3>Customer Accounts</h3>
+            <p style="font-size: 0.8125rem;">Registered customers with lifetime purchase history.</p>
+          </div>
+          <button class="btn-primary" style="width: auto; height: 36px;" id="btn-open-create-customer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Customer
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Orders</th>
+                <th>Total Spent</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-customers-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL: PRODUCT DETAIL (VIEW 2) -->
+  <!-- ====================================================================== -->
+  <div class="modal-overlay" id="modal-product-detail" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="btn-close-detail-modal" aria-label="Close modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="product-detail-layout" id="modal-detail-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL: ORDER DETAILS (Line Items) -->
+  <!-- ====================================================================== -->
+  <div class="modal-overlay" id="modal-order-detail" role="dialog" aria-modal="true">
+    <div class="modal-content" style="max-width: 680px; padding: var(--space-6);">
+      <button class="modal-close-btn" id="btn-close-order-modal" aria-label="Close modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div id="modal-order-detail-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- SIDE DRAWER: CREATE / EDIT PRODUCT -->
+  <!-- ====================================================================== -->
+  <aside class="side-drawer" id="drawer-product-form" aria-label="Product Form Drawer">
+    <div class="drawer-header">
+      <h3 id="drawer-product-title">Add New Product</h3>
+      <button class="modal-close-btn" id="btn-close-product-drawer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <form id="form-product" class="drawer-body">
+      <input type="hidden" id="prod-edit-id">
+
+      <div class="form-group">
+        <label class="form-label" for="prod-name">Product Name *</label>
+        <input type="text" id="prod-name" class="form-input" required placeholder="e.g. Sony WH-1000XM5">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="prod-sku">SKU Code (Unique) *</label>
+        <input type="text" id="prod-sku" class="form-input" required placeholder="e.g. AUD-SNY-XM5">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+        <div class="form-group">
+          <label class="form-label" for="prod-category">Category *</label>
+          <select id="prod-category" class="form-select" required></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="prod-brand">Brand *</label>
+          <select id="prod-brand" class="form-select" required></select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="prod-supplier">Supplier</label>
+        <select id="prod-supplier" class="form-select"></select>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);">
+        <div class="form-group">
+          <label class="form-label" for="prod-price">Price (₹ INR) *</label>
+          <input type="number" id="prod-price" class="form-input" step="0.01" min="1" required placeholder="29990.00">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="prod-stock">Stock Quantity *</label>
+          <input type="number" id="prod-stock" class="form-input" min="0" required placeholder="10">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="prod-image">Image URL</label>
+        <input type="url" id="prod-image" class="form-input" placeholder="https://images.unsplash.com/...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="prod-desc">Hardware Description</label>
+        <textarea id="prod-desc" class="form-textarea" placeholder="Detailed technical specifications..."></textarea>
+      </div>
+
+      <div class="form-group" style="display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-2);">
+        <input type="checkbox" id="prod-active" checked style="width: 16px; height: 16px; accent-color: var(--accent);">
+        <label for="prod-active" style="font-size: 0.875rem; font-weight: 500;">Active in Catalog</label>
+      </div>
+    </form>
+    <div class="drawer-footer">
+      <button type="button" class="btn-secondary" id="btn-cancel-product">Cancel</button>
+      <button type="button" class="btn-primary" style="width: auto; padding: 0 var(--space-5);" id="btn-save-product">Save Product</button>
+    </div>
+  </aside>
+
+  <!-- ====================================================================== -->
+  <!-- MODAL: ADD / EDIT CUSTOMER -->
+  <!-- ====================================================================== -->
+  <div class="modal-overlay" id="modal-customer-form" role="dialog" aria-modal="true">
+    <div class="modal-content" style="max-width: 500px; padding: var(--space-6);">
+      <button class="modal-close-btn" id="btn-close-customer-modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <h3 id="modal-customer-title" style="margin-bottom: var(--space-4);">Add Customer Profile</h3>
+      <form id="form-customer">
+        <input type="hidden" id="cust-edit-id">
+        <div class="form-group">
+          <label class="form-label" for="cust-form-name">Full Name *</label>
+          <input type="text" id="cust-form-name" class="form-input" required placeholder="e.g. Vikram Malhotra">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cust-form-email">Email Address *</label>
+          <input type="email" id="cust-form-email" class="form-input" required placeholder="vikram@domain.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cust-form-phone">Phone Number *</label>
+          <input type="tel" id="cust-form-phone" class="form-input" required placeholder="+91 98...">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cust-form-city">City *</label>
+          <input type="text" id="cust-form-city" class="form-input" required placeholder="e.g. Mumbai">
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-6);">
+          <button type="button" class="btn-secondary" id="btn-cancel-customer">Cancel</button>
+          <button type="submit" class="btn-primary" style="width: auto; padding: 0 var(--space-5);">Save Customer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Vanilla JavaScript Application Logic -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
